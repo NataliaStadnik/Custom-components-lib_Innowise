@@ -1,10 +1,7 @@
 import { FC, HTMLAttributes } from 'react';
 import './style.css';
+import { Sizes, Variants } from '../interfaces';
 import React from 'react';
-
-type Sizes = 'small' | 'medium' | 'large';
-
-type Variants = 'contained' | 'text' | 'outlined';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   size?: Sizes;
