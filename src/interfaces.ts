@@ -21,4 +21,7 @@ export interface CheckBoxCommon {
   defaultChecked?: boolean;
   disabled?: boolean;
   onChange?: () => void;
+  classes?: object;
+  id?: string;
+  inputRef?: React.Ref<HTMLInputElement>;
 }

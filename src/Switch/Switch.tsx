@@ -13,6 +13,9 @@ const Switch: FC<SwitchProps> = ({
   disabled,
   size = 'medium',
   onChange,
+  id,
+  classes,
+  inputRef,
 }) => {
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
@@ -32,6 +35,9 @@ const Switch: FC<SwitchProps> = ({
           defaultChecked={isChecked}
           disabled={disabled}
           onChange={innerHandleChange}
+          style={classes}
+          id={id}
+          ref={inputRef}
         />
         <span className={`reset switch-track track-${size}`}></span>
         <span className={`reset switch-thumb thumb-${size}`}></span>

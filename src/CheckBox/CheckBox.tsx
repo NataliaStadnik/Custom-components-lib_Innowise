@@ -15,6 +15,9 @@ const Checkbox: FC<CheckboxProps> = ({
   checked,
   size = 'medium',
   onChange,
+  id,
+  classes,
+  inputRef,
 }) => {
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
@@ -37,6 +40,9 @@ const Checkbox: FC<CheckboxProps> = ({
             disabled={disabled}
             readOnly={checked || disabled}
             onChange={innerHandleChange}
+            style={classes}
+            id={id}
+            ref={inputRef}
           />
           <span className="reset checkmark"></span>
         </div>

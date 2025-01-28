@@ -9,6 +9,8 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   onClick?: () => void;
   href?: string;
+  classes?: object;
+  id?: string;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -18,13 +20,17 @@ const Button: FC<ButtonProps> = ({
   href,
   onClick,
   children,
+  classes,
+  id,
 }) => {
   if (href) {
     return (
       <a
         className={`reset button-root button-${variant} button-${size}`}
         href={href}
-        onClick={onClick}>
+        onClick={onClick}
+        style={classes}
+        id={id}>
         {children}
       </a>
     );
@@ -34,7 +40,9 @@ const Button: FC<ButtonProps> = ({
     <button
       className={`reset button-root button-${variant} button-${size}`}
       disabled={disabled}
-      onClick={onClick}>
+      onClick={onClick}
+      style={classes}
+      id={id}>
       {children}
     </button>
   );

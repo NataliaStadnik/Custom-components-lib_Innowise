@@ -17,7 +17,6 @@
   transform: translateY(-55%);
   background-color: var(--basic-hell);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: -10;
 }
 
 .textfield-label-standart {
@@ -32,6 +31,7 @@
 
 .textfield-label-small {
   top: 37px;
+  left: 10px;
   font-size: 14px;
   line-height: 20px;
 }

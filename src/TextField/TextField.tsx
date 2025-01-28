@@ -16,6 +16,10 @@ interface TextFieldProps {
   error?: boolean;
   children?: JSX.Element;
   handleAction?: () => void;
+  classes?: object;
+  autoFocus?: boolean;
+  placeHolder?: string;
+  inputRef?: React.Ref<HTMLInputElement>;
 }
 
 const TextField: FC<TextFieldProps> = ({
@@ -31,6 +35,10 @@ const TextField: FC<TextFieldProps> = ({
   error,
   children,
   handleAction,
+  classes,
+  autoFocus,
+  placeHolder,
+  inputRef,
 }) => {
   const inputID = useId();
   const [values, setValues] = useState(defaultValue);
@@ -73,6 +81,10 @@ const TextField: FC<TextFieldProps> = ({
           readOnly={readonly}
           required={required}
           onClick={handleAction}
+          style={classes}
+          autoFocus={autoFocus}
+          placeholder={placeHolder}
+          ref={inputRef}
         />
 
         <label
