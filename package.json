@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/index.js",
   "scripts": {
+    "publish": "npx webpack && npm version patch && npm publish",
     "prepare": "husky install",
     "lint": "eslint './'",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +11,7 @@
   "keywords": [],
   "author": "Natalia Stadnik",
   "license": "ISC",
-  "description": "",
+  "description": "custom UI components",
   "devDependencies": {
     "@types/react": "^19.0.8",
     "css-loader": "^7.1.2",
