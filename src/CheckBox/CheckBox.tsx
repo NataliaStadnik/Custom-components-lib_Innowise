@@ -1,15 +1,11 @@
 import { FC, useState } from 'react';
 import './style.css';
-import { Sizes } from '../interfaces';
+import { CheckBoxCommon, Sizes } from '../interfaces';
 import React from 'react';
 
-interface CheckboxProps {
-  label?: string;
-  defaultChecked?: boolean;
-  disabled?: boolean;
+interface CheckboxProps extends CheckBoxCommon {
   checked?: boolean;
   size?: Sizes;
-  onChange?: () => void;
 }
 
 const Checkbox: FC<CheckboxProps> = ({
@@ -28,7 +24,6 @@ const Checkbox: FC<CheckboxProps> = ({
       onChange();
     }
   };
-
   return (
     <>
       <label className="reset checkbox-wrap">
