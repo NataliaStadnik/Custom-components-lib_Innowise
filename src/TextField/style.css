@@ -21,12 +21,16 @@
 
 .textfield-label-standart {
   left: 0;
+  line-height: 31px;
+}
+
+.textfield-label-filled {
+  background-color: inherit;
 }
 
 .textfield-label-medium {
-  top: 45%;
+  top: 43px;
   font-size: 18px;
-  line-height: 24px;
 }
 
 .textfield-label-small {
@@ -54,13 +58,28 @@
 .textfield-input[type=date]~.textfield-label-medium,
 .textfield-input[type=month]~.textfield-label-medium,
 .textfield-input[type=time]~.textfield-label-medium {
-  top: 5%;
+  top: 3%;
 }
 
 .textfield-input[type=date]~.textfield-label-small,
 .textfield-input[type=month]~.textfield-label-small,
 .textfield-input[type=time]~.textfield-label-small {
-  top: 8px;
+  top: 5px;
+}
+
+.textfield-input-filled[type=date]~.textfield-label-small,
+.textfield-input-filled[type=month]~.textfield-label-small,
+.textfield-input-filled[type=time]~.textfield-label-small,
+.textfield-input-filled[type=email]~.textfield-label-small {
+  top: 30px;
+  left: 15px;
+}
+
+
+.textfield-input-medium[type=date]~.textfield-label-medium,
+.textfield-input-medium[type=month]~.textfield-label-medium,
+.textfield-input-medium[type=time]~.textfield-label-medium {
+  top: 30px;
 }
 
 .textfield-input-standart[type=date]~.textfield-label-medium,
@@ -71,8 +90,10 @@
 
 .textfield-input-standart[type=date]~.textfield-label-small,
 .textfield-input-standart[type=month]~.textfield-label-small,
-.textfield-input-standart[type=time]~.textfield-label-small {
+.textfield-input-standart[type=time]~.textfield-label-small,
+.textfield-input-standart[type=email]~.textfield-label-small {
   top: 30%;
+  left: 0;
 }
 
 .textfield-input-medium {
@@ -109,7 +130,19 @@
 }
 
 .textfield-input-outlined:focus-visible+.textfield-label {
-  top: 13px;
+  top: 15px;
+}
+
+.textfield-input-filled::placeholder {
+  opacity: 0;
+}
+
+.textfield-input-filled:focus-visible::placeholder {
+  opacity: 1;
+}
+
+.textfield-input-small~.standart-small {
+  left: 0;
 }
 
 .textfield-input:disabled {
@@ -184,7 +217,6 @@
   border-bottom: 1px solid #000;
 }
 
-
 .textfield-input-filled:hover:not(:disabled) {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -192,7 +224,6 @@
 .textfield-input-standart:hover:not(:disabled):not(:focus-visible) {
   border-bottom: 2px solid #000;
 }
-
 
 .textfield-input-filled:disabled {
   background-color: rgba(0, 0, 0, 0.2);
@@ -241,4 +272,10 @@
 
 .textfield-small .textfield-input-filled~.helper-text {
   bottom: -5px;
+}
+
+.textfield-input[type=date]~.set-label-outlined,
+.textfield-input[type=month]~.set-label-outlined,
+.textfield-input[type=time]~.set-label-outlined {
+  top: 15px;
 }

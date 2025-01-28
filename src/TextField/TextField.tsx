@@ -6,7 +6,7 @@ import React from 'react';
 interface TextFieldProps {
   variant?: TextFieldVariants;
   size?: TwoSizes;
-  type: TextFieldTypes;
+  type?: TextFieldTypes;
   label: string;
   disabled?: boolean;
   required?: boolean;
