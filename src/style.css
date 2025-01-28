@@ -8,6 +8,8 @@
   --variant-disabled-BG: rgba(0, 0, 0, 0.12);
   --variant-disabled-color: rgba(0, 0, 0, 0.26);
   --label-text: rgb(26, 30, 35);
+  --text-fiels-label: rgba(0, 0, 0, 0.4);
+  --error-color: rgb(211, 47, 47);
 }
 
 
