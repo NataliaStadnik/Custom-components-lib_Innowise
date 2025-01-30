@@ -27,12 +27,18 @@ const Modal: FC<ModalProps> = ({
   const [isOpen, setOpen] = useState(open);
   const [isChildOpen, setChild] = useState(false);
 
+  const body = document.querySelector('body');
+  if (isOpen) {
+    body?.classList.add('no-scroll');
+  }
+
   const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).id === 'parent-modal') {
       if (onClose) {
         onClose();
       }
       setOpen(!isOpen);
+      body?.classList.remove('no-scroll');
     }
   };
 
