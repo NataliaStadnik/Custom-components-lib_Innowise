@@ -18,6 +18,7 @@ const Checkbox: FC<CheckboxProps> = ({
   id,
   classes,
   inputRef,
+  required,
 }) => {
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
@@ -43,6 +44,7 @@ const Checkbox: FC<CheckboxProps> = ({
             style={classes}
             id={id}
             ref={inputRef}
+            required={required}
           />
           <span className="reset checkmark"></span>
         </div>

@@ -16,6 +16,7 @@ const Switch: FC<SwitchProps> = ({
   id,
   classes,
   inputRef,
+  required,
 }) => {
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
@@ -38,6 +39,7 @@ const Switch: FC<SwitchProps> = ({
           style={classes}
           id={id}
           ref={inputRef}
+          required={required}
         />
         <span className={`reset switch-track track-${size}`}></span>
         <span className={`reset switch-thumb thumb-${size}`}></span>

@@ -11,6 +11,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   href?: string;
   classes?: object;
   id?: string;
+  children: string | React.ReactElement;
 }
 
 const Button: FC<ButtonProps> = ({

@@ -8,3 +8,4 @@ import Modal from './Modal/Modal';
 export { Button, Checkbox, Switch, TextField, Modal };
 
 // стили кнопок глобально не работают
+// inputRef? - --forwardRef
