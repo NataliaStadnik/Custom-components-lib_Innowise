@@ -1,13 +1,9 @@
 .textfield-medium {
   position: relative;
-  width: 225px;
-  height: 100px;
 }
 
 .textfield-small {
   position: relative;
-  width: 200px;
-  height: 80px;
 }
 
 .textfield-label {
@@ -75,7 +71,6 @@
   left: 15px;
 }
 
-
 .textfield-input-medium[type=date]~.textfield-label-medium,
 .textfield-input-medium[type=month]~.textfield-label-medium,
 .textfield-input-medium[type=time]~.textfield-label-medium {
@@ -97,16 +92,16 @@
 }
 
 .textfield-input-medium {
-  width: 225px;
-  height: 55px;
+  min-width: 225px;
+  min-height: 55px;
   padding: 15px;
   font-size: 18px;
   line-height: 24px;
 }
 
 .textfield-input-small {
-  width: 185px;
-  height: 40px;
+  min-width: 185px;
+  min-height: 40px;
   padding: 10px;
   font-size: 14px;
   line-height: 20px;
