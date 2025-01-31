@@ -1,6 +1,6 @@
 {
   "name": "custom-components-lib_innowise",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/index.js",
   "scripts": {
     "publish": "npx webpack && npm version patch && npm publish",
