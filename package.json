@@ -1,6 +1,6 @@
 {
   "name": "custom-components-lib_innowise",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "./dist/index.js",
   "scripts": {
     "build": "npx webpack",
@@ -8,13 +8,24 @@
     "publish": "npm publish",
     "prepare": "husky install",
     "lint": "eslint './'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "keywords": [],
   "author": "Natalia Stadnik",
   "license": "ISC",
   "description": "custom UI components",
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-essentials": "^8.5.2",
+    "@storybook/addon-interactions": "^8.5.2",
+    "@storybook/addon-onboarding": "^8.5.2",
+    "@storybook/addon-webpack5-compiler-swc": "^2.0.0",
+    "@storybook/blocks": "^8.5.2",
+    "@storybook/react": "^8.5.2",
+    "@storybook/react-webpack5": "^8.5.2",
+    "@storybook/test": "^8.5.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "css-loader": "^7.1.2",
@@ -24,6 +35,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-storybook": "^0.11.2",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
@@ -32,6 +44,7 @@
     "react-dom": "^19.0.0",
     "react-refresh": "^0.16.0",
     "react-refresh-typescript": "^2.0.10",
+    "storybook": "^8.5.2",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
@@ -56,5 +69,10 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
 }

@@ -1,3 +1,25 @@
+.reset {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.15;
+  overflow: visible;
+  text-transform: none;
+  user-select: none;
+  outline: 0;
+  text-decoration: none;
+}
+
 .select-wrap {
   position: relative;
   width: max-content;
@@ -18,7 +40,7 @@
   display: flex;
   flex-direction: column;
   padding: 5px 0;
-  background-color: var(--basic-hell);
+  background-color: #fff;
   border-radius: 5px;
   z-index: 50;
   list-style-type: none;
@@ -45,7 +67,7 @@
 }
 
 .state-false {
-  background-color: var(--basic-hell);
+  background-color: #fff;
 }
 
 .select-input {
@@ -54,7 +76,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  border: 1px solid var(--text-fiels-label);
+  border: 1px solid rgba(0, 0, 0, 0.4);
   padding: 15px 30px 15px 15px;
   font-size: 18px;
   line-height: 24px;
@@ -68,11 +90,11 @@
 .select-label {
   position: absolute;
   left: 15px;
-  color: var(--text-fiels-label);
+  color: rgba(0, 0, 0, 0.4);
   transform: translateY(-55%);
   top: 43px;
   font-size: 18px;
-  background-color: var(--basic-hell);
+  background-color: #fff;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -87,7 +109,7 @@
 }
 
 .select-input:focus-visible {
-  border: 2px solid var(--basic-dark);
+  border: 2px solid #1976d2;
 }
 
 .select-svg-rotate {
@@ -96,7 +118,7 @@
 
 .select-input:focus-visible+.select-label {
   padding: 0 5px;
-  color: var(--basic-dark);
+  color: #1976d2;
   font-size: 13px;
   line-height: 19px;
   z-index: 10;
@@ -118,13 +140,14 @@
 .inset-label {
   padding: 0 5px;
   top: 15px;
-  color: var(--text-fiels-label);
+  color: rgba(0, 0, 0, 0.4);
   font-size: 13px;
   line-height: 19px;
   z-index: 10;
 }
 
 .curr-value {
+  text-align: start;
   margin-top: 15px;
   padding: 15px 30px 15px 15px;
   font-size: 18px;
@@ -141,13 +164,13 @@
 .error,
 .error-input-select,
 .error-input-select:focus-visible {
-  border-color: var(--error-color);
+  border-color: rgb(211, 47, 47);
 }
 
 .error-input-select~.helper-error,
 .error-input-select+.select-label,
 .error-input-select:focus-visible+.select-label {
-  color: var(--error-color);
+  color: rgb(211, 47, 47);
 }
 
 .helper-text {
@@ -156,7 +179,7 @@
   left: 15px;
   font-size: 14px;
   line-height: 20px;
-  color: var(--text-fiels-label);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .select-btn {

@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 import './style.css';
-import { CheckBoxCommon, TwoSizes } from '../interfaces';
+import { CheckBoxCommon } from '../interfaces';
 import React from 'react';
 
 interface SwitchProps extends CheckBoxCommon {
-  size?: TwoSizes;
+  size?: 'small' | 'medium';
 }
 
 const Switch: FC<SwitchProps> = ({
@@ -44,7 +44,12 @@ const Switch: FC<SwitchProps> = ({
         <span className={`reset switch-track track-${size}`}></span>
         <span className={`reset switch-thumb thumb-${size}`}></span>
       </div>
-      {label && <span className="reset switch-label">{label}</span>}
+      {label && (
+        <span className="reset switch-label">
+          {label}
+          {required && '*'}
+        </span>
+      )}
     </label>
   );
 };

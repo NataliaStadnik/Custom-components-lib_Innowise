@@ -1,8 +1,8 @@
 import { FC, JSX } from 'react';
 import './style.css';
-import { CheckBoxCommon, Options } from '../interfaces';
+import { Options } from '../interfaces';
 import React from 'react';
-interface SelectProps extends CheckBoxCommon {
+interface SelectProps {
     label?: string;
     disabled?: boolean;
     required?: boolean;

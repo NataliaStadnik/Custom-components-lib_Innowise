@@ -1,11 +1,11 @@
 import { FC, JSX, useEffect, useRef, useState } from 'react';
 import './style.css';
 import Icon from './Icon';
-import { CheckBoxCommon, Options } from '../interfaces';
+import { Options } from '../interfaces';
 import SelectListItem from './SelectListItem';
 import React from 'react';
 
-interface SelectProps extends CheckBoxCommon {
+interface SelectProps {
   label?: string;
   disabled?: boolean;
   required?: boolean;

@@ -1,11 +1,11 @@
 import { FC, JSX, useEffect, useId, useRef, useState } from 'react';
 import './style.css';
-import { TextFieldTypes, TextFieldVariants, TwoSizes } from '../interfaces';
+import { TextFieldTypes, TextFieldVariants } from '../interfaces';
 import React from 'react';
 
 interface TextFieldProps {
   variant?: TextFieldVariants;
-  size?: TwoSizes;
+  size?: 'small' | 'medium';
   type?: TextFieldTypes;
   label: string;
   disabled?: boolean;
@@ -68,34 +68,39 @@ const TextField: FC<TextFieldProps> = ({
   return (
     <>
       <fieldset className={`reset textfield-${size}`}>
-        <input
-          value={values}
-          className={`reset textfield-input textfield-input-${variant} textfield-input-${size} ${
-            error ? `error-input-${variant}` : ''
-          }`}
-          type={type}
-          name={label}
-          id={inputID}
-          onChange={handleChange}
-          disabled={disabled}
-          readOnly={readonly}
-          required={required}
-          onClick={handleAction}
-          style={classes}
-          autoFocus={autoFocus}
-          placeholder={placeHolder}
-          ref={inputRef}
-        />
+        <div className={`textfield-${size}-size`}>
+          <input
+            value={values}
+            className={`reset textfield-input textfield-input-${variant} textfield-input-${size} ${
+              error ? `error-input-${variant}` : ''
+            }`}
+            type={type}
+            name={label}
+            id={inputID}
+            onChange={handleChange}
+            disabled={disabled}
+            readOnly={readonly}
+            required={required}
+            onClick={handleAction}
+            style={classes}
+            autoFocus={autoFocus}
+            placeholder={placeHolder}
+            ref={inputRef}
+          />
 
-        <label
-          ref={ref}
-          className={`reset textfield-label textfield-label-${variant} textfield-label-${size} ${variant}-${size}`}
-          htmlFor={inputID}>
-          {label}
-        </label>
-        {children}
+          <label
+            ref={ref}
+            className={`reset textfield-label textfield-label-${variant} textfield-label-${size} ${variant}-${size}`}
+            htmlFor={inputID}>
+            {label}
+            {required && '*'}
+          </label>
+          {children}
 
-        {helperText && <span className={`helper-text ${error ? 'error' : ''}`}>{helperText}</span>}
+          {helperText && (
+            <span className={`helper-text ${error ? 'error' : ''}`}>{helperText}</span>
+          )}
+        </div>
       </fieldset>
     </>
   );

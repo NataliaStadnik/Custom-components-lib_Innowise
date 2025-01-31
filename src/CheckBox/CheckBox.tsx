@@ -48,7 +48,12 @@ const Checkbox: FC<CheckboxProps> = ({
           />
           <span className="reset checkmark"></span>
         </div>
-        {label && <span className="reset checkbox-label">{label}</span>}
+        {label && (
+          <span className="reset checkbox-label">
+            {label}
+            {required && '*'}
+          </span>
+        )}
       </label>
     </>
   );

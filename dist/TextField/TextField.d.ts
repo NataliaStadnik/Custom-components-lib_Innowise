@@ -1,10 +1,10 @@
 import { FC, JSX } from 'react';
 import './style.css';
-import { TextFieldTypes, TextFieldVariants, TwoSizes } from '../interfaces';
+import { TextFieldTypes, TextFieldVariants } from '../interfaces';
 import React from 'react';
 interface TextFieldProps {
     variant?: TextFieldVariants;
-    size?: TwoSizes;
+    size?: 'small' | 'medium';
     type?: TextFieldTypes;
     label: string;
     disabled?: boolean;

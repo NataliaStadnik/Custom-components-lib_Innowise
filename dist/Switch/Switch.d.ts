@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import './style.css';
-import { CheckBoxCommon, TwoSizes } from '../interfaces';
+import { CheckBoxCommon } from '../interfaces';
 interface SwitchProps extends CheckBoxCommon {
-    size?: TwoSizes;
+    size?: 'small' | 'medium';
 }
 declare const Switch: FC<SwitchProps>;
 export default Switch;
