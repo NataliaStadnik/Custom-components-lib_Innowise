@@ -43,7 +43,7 @@ const Select: FC<SelectProps> = ({
   const [values, setValues] = useState(defaultValue || '');
   const [text, setText] = useState('');
 
-  const labelClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const labelClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const target = e.target as HTMLButtonElement;
     setValues(target.dataset.value || '');
     setText(target.textContent || '');

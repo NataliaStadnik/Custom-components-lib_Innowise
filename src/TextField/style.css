@@ -1,9 +1,11 @@
 .textfield-medium {
   position: relative;
+  width: max-content;
 }
 
 .textfield-small {
   position: relative;
+  width: max-content;
 }
 
 .textfield-label {
@@ -41,6 +43,7 @@
   top: 0;
   position: absolute;
   left: 0;
+  width: 100%;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.8);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -92,19 +95,27 @@
 }
 
 .textfield-input-medium {
-  min-width: 225px;
-  min-height: 55px;
   padding: 15px;
   font-size: 18px;
   line-height: 24px;
 }
 
 .textfield-input-small {
-  min-width: 185px;
-  min-height: 40px;
   padding: 10px;
   font-size: 14px;
   line-height: 20px;
+}
+
+.textfield-small-size {
+  width: 185px;
+  height: 90px;
+  position: relative;
+}
+
+.textfield-medium-size {
+  width: 225px;
+  height: 95px;
+  position: relative;
 }
 
 .textfield-input-outlined:hover:not(:focus-visible):not(:disabled) {
