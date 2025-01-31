@@ -26,3 +26,8 @@ export interface CheckBoxCommon {
   inputRef?: React.Ref<HTMLInputElement>;
   required?: boolean;
 }
+
+export interface Options {
+  value: string;
+  label: string;
+}
