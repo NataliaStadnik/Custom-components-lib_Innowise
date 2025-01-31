@@ -3,7 +3,9 @@
   "version": "1.0.4",
   "main": "./dist/index.js",
   "scripts": {
-    "publish": "npx webpack && npm version patch && npm publish",
+    "build": "npx webpack",
+    "patch": "npm version patch",
+    "publish": "npm publish",
     "prepare": "husky install",
     "lint": "eslint './'",
     "test": "echo \"Error: no test specified\" && exit 1"

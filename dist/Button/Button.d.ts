@@ -10,7 +10,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     href?: string;
     classes?: object;
     id?: string;
-    children: string | React.ReactElement;
+    children?: string | React.ReactElement;
 }
 declare const Button: FC<ButtonProps>;
 export default Button;
