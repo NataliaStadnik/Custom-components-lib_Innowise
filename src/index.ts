@@ -6,5 +6,3 @@ import Modal from './Modal/Modal';
 import Select from './Select/Select';
 
 export { Button, Checkbox, Switch, TextField, Modal, Select };
-
-// навигация селект

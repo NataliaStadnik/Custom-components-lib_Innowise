@@ -2,6 +2,8 @@
 
 [Innowise Lab Internship: Custom-components-lib](https://drive.google.com/file/d/1C148FRnWfXVoRDslDWcYac3bEhebdIAV/view)
 
+[npm: ui-components_innowise](https://www.npmjs.com/package/ui-components_innowise)
+
 - React
 - TypeScript
 - Webpack
