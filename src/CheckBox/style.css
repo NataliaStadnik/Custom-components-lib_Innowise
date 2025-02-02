@@ -120,6 +120,15 @@
   display: block;
 }
 
+.checked~.checkmark {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+
+.checked~.checkmark:after {
+  display: block;
+}
+
 .checkbox-input:disabled~.checkmark {
   border-color: rgba(0, 0, 0, 0.26);
   cursor: default;

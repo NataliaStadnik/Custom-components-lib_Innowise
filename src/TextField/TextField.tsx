@@ -1,4 +1,4 @@
-import { FC, JSX, useEffect, useId, useRef, useState } from 'react';
+import { forwardRef, JSX, useEffect, useId, useRef, useState } from 'react';
 import './style.css';
 import { TextFieldTypes, TextFieldVariants } from '../interfaces';
 import React from 'react';
@@ -7,7 +7,7 @@ interface TextFieldProps {
   variant?: TextFieldVariants;
   size?: 'small' | 'medium';
   type?: TextFieldTypes;
-  label: string;
+  label?: string;
   disabled?: boolean;
   required?: boolean;
   readonly?: boolean;
@@ -15,31 +15,31 @@ interface TextFieldProps {
   defaultValue?: string;
   error?: boolean;
   children?: JSX.Element;
-  handleAction?: () => void;
+  onChange?: () => void;
   classes?: object;
   autoFocus?: boolean;
   placeHolder?: string;
   inputRef?: React.Ref<HTMLInputElement>;
 }
 
-const TextField: FC<TextFieldProps> = ({
-  variant = 'outlined',
-  size = 'medium',
-  label,
-  disabled,
-  readonly,
-  type,
-  required,
-  helperText,
-  defaultValue = '',
-  error,
-  children,
-  handleAction,
-  classes,
-  autoFocus,
-  placeHolder,
-  inputRef,
-}) => {
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextField(props, inputRef) {
+  const {
+    variant = 'outlined',
+    size = 'medium',
+    label,
+    disabled,
+    readonly,
+    type = 'text',
+    required,
+    helperText,
+    defaultValue = '',
+    error,
+    children,
+    onChange,
+    classes,
+    autoFocus,
+    placeHolder,
+  } = props;
   const inputID = useId();
   const [values, setValues] = useState(defaultValue);
   const ref = useRef<HTMLLabelElement>(null);
@@ -49,10 +49,6 @@ const TextField: FC<TextFieldProps> = ({
   };
 
   useEffect(() => {
-    checkClasses();
-  });
-
-  const checkClasses = () => {
     const label = ref.current;
 
     if (values.trim().length > 0 && !label?.classList.contains(`set-label-${variant}`)) {
@@ -63,13 +59,20 @@ const TextField: FC<TextFieldProps> = ({
     if (error) {
       label?.classList.add('error');
     }
-  };
+  }, [error, values, variant]);
+
+  useEffect(() => {
+    if (onChange) {
+      onChange();
+    }
+  }, [onChange]);
 
   return (
     <>
       <fieldset className={`reset textfield-${size}`}>
-        <div className={`textfield-${size}-size`}>
+        <div data-testid="textfield-wrap" className={`textfield-${size}-size`}>
           <input
+            data-testid="TextField"
             value={values}
             className={`reset textfield-input textfield-input-${variant} textfield-input-${size} ${
               error ? `error-input-${variant}` : ''
@@ -81,7 +84,6 @@ const TextField: FC<TextFieldProps> = ({
             disabled={disabled}
             readOnly={readonly}
             required={required}
-            onClick={handleAction}
             style={classes}
             autoFocus={autoFocus}
             placeholder={placeHolder}
@@ -89,6 +91,7 @@ const TextField: FC<TextFieldProps> = ({
           />
 
           <label
+            data-testid="TextField-label"
             ref={ref}
             className={`reset textfield-label textfield-label-${variant} textfield-label-${size} ${variant}-${size}`}
             htmlFor={inputID}>
@@ -98,12 +101,14 @@ const TextField: FC<TextFieldProps> = ({
           {children}
 
           {helperText && (
-            <span className={`helper-text ${error ? 'error' : ''}`}>{helperText}</span>
+            <span data-testid="help-text" className={`helper-text ${error ? 'error' : ''}`}>
+              {helperText}
+            </span>
           )}
         </div>
       </fieldset>
     </>
   );
-};
+});
 
 export default TextField;

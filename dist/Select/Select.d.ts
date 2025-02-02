@@ -1,4 +1,4 @@
-import { FC, JSX } from 'react';
+import { JSX } from 'react';
 import './style.css';
 import { Options } from '../interfaces';
 import React from 'react';
@@ -18,5 +18,5 @@ interface SelectProps {
     options: Array<Options>;
     id?: string;
 }
-declare const Select: FC<SelectProps>;
+declare const Select: React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLInputElement>>;
 export default Select;

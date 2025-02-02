@@ -7,5 +7,4 @@ import Select from './Select/Select';
 
 export { Button, Checkbox, Switch, TextField, Modal, Select };
 
-// стили кнопок глобально не работают
 // навигация селект

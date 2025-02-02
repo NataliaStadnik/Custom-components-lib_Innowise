@@ -24,7 +24,11 @@ const ChildModal: FC<ChildModalProps> = ({ title, descr, updateState }) => {
 
   if (isOpen) {
     return (
-      <div id="child-modal" className="backdrop" onClick={(e) => handleClose(e)}>
+      <div
+        data-testid="child-modal"
+        id="child-modal"
+        className="backdrop"
+        onClick={(e) => handleClose(e)}>
         <div className="modal modal-child">
           {title && <h2 className="modal-title">{title}</h2>}
           {descr && <p className="modal-text">{descr}</p>}

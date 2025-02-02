@@ -1,4 +1,4 @@
-import { FC, JSX, useEffect, useRef, useState } from 'react';
+import { forwardRef, JSX, useEffect, useRef, useState } from 'react';
 import './style.css';
 import Icon from './Icon';
 import { Options } from '../interfaces';
@@ -22,22 +22,23 @@ interface SelectProps {
   id?: string;
 }
 
-const Select: FC<SelectProps> = ({
-  label,
-  options,
-  disabled,
-  required,
-  readonly,
-  helperText,
-  defaultValue,
-  error,
-  children,
-  onChange,
-  classes,
-  autoFocus,
-  inputRef,
-  id,
-}) => {
+const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, inputRef) {
+  const {
+    label,
+    options,
+    disabled,
+    required,
+    readonly,
+    helperText,
+    defaultValue,
+    error,
+    children,
+    onChange,
+    classes,
+    autoFocus,
+    id,
+  } = props;
+
   const ref = useRef<HTMLLabelElement>(null);
   const [isOpen, setOpen] = useState(false);
   const [values, setValues] = useState(defaultValue || '');
@@ -48,10 +49,13 @@ const Select: FC<SelectProps> = ({
     setValues(target.dataset.value || '');
     setText(target.textContent || '');
     setOpen(!isOpen);
+  };
+
+  useEffect(() => {
     if (onChange) {
       onChange();
     }
-  };
+  }, [onChange]);
 
   useEffect(() => {
     const label = ref.current;
@@ -64,7 +68,7 @@ const Select: FC<SelectProps> = ({
     if (error) {
       label?.classList.add('error');
     }
-  });
+  }, [error, values]);
 
   useEffect(() => {
     if (defaultValue) {
@@ -89,30 +93,11 @@ const Select: FC<SelectProps> = ({
     }
   };
 
-  // useEffect(() => {
-  //   let index = 0;
-  //   if (isOpen) {
-  //     document.addEventListener("keydown", (e) => {
-  //       const ul = document.querySelectorAll(".select-list__item");
-
-  //       console.log(ul[0]);
-  //       if (e.key === "ArrowDown") {
-  //         ul[index].classList.add("focus");
-  //         index++;
-  //       }
-
-  //       if (e.key === "ArrowUp") {
-  //         --index;
-  //         ul[index].classList.add("focus");
-  //       }
-  //     });
-  //   }
-  // });
-
   return (
-    <form id={id} className={`reset select-wrap`}>
-      <div className={`select-medium`}>
+    <form data-testid="form" id={id} className={`reset select-wrap`}>
+      <div data-testid="select-wrap" className={`select-medium`}>
         <input
+          data-testid="select"
           value={values}
           onChange={(e) => setValues(e.target.value)}
           onClick={openModal}
@@ -130,16 +115,22 @@ const Select: FC<SelectProps> = ({
           tabIndex={0}
         />
 
-        <label ref={ref} className={`reset select-label`}>
+        <label data-testid="select-label" ref={ref} className={`reset select-label`}>
           {label}
           {required && '*'}
         </label>
-        {text && <span className="curr-value">{text}</span>}
+        {text && (
+          <span data-testid="curr-value" className="curr-value">
+            {text}
+          </span>
+        )}
 
         {children}
 
         {helperText && (
-          <span className={`helper-text ${error ? 'helper-error' : ''}`}>{helperText}</span>
+          <span data-testid="help-text" className={`helper-text ${error ? 'helper-error' : ''}`}>
+            {helperText}
+          </span>
         )}
 
         <Icon state={isOpen} />
@@ -159,6 +150,6 @@ const Select: FC<SelectProps> = ({
       )}
     </form>
   );
-};
+});
 
 export default Select;

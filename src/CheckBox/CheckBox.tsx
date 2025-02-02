@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import './style.css';
 import { CheckBoxCommon, Sizes } from '../interfaces';
 import React from 'react';
@@ -8,48 +8,53 @@ interface CheckboxProps extends CheckBoxCommon {
   size?: Sizes;
 }
 
-const Checkbox: FC<CheckboxProps> = ({
-  label,
-  disabled,
-  defaultChecked,
-  checked,
-  size = 'medium',
-  onChange,
-  id,
-  classes,
-  inputRef,
-  required,
-}) => {
-  const [isChecked, setIsChecked] = useState(defaultChecked);
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(props, inputRef) {
+  const {
+    label,
+    disabled,
+    defaultChecked,
+    checked,
+    size = 'medium',
+    onChange,
+    id,
+    classes,
+    required,
+  } = props;
+  const [isChecked, setIsChecked] = useState(defaultChecked || checked);
 
-  const innerHandleChange = () => {
+  const handleChange = () => {
+    if (checked) {
+      return;
+    }
     setIsChecked(!isChecked);
+  };
+
+  useEffect(() => {
     if (onChange) {
       onChange();
     }
-  };
+  }, [onChange]);
+
   return (
     <>
       <label className="reset checkbox-wrap">
-        <div className={`reset checkbox-root checkbox-${size}`}>
+        <div data-testid="checkbox-size" className={`reset checkbox-root checkbox-${size}`}>
           <input
-            className="reset checkbox-input"
+            className={`reset checkbox-input ${checked ? 'checked' : ''}`}
             type="checkbox"
             name={label}
             defaultChecked={isChecked}
-            checked={checked}
             disabled={disabled}
-            readOnly={checked || disabled}
-            onChange={innerHandleChange}
-            style={classes}
+            readOnly={disabled}
+            onChange={handleChange}
             id={id}
             ref={inputRef}
             required={required}
           />
-          <span className="reset checkmark"></span>
+          <span data-testid="checkbox-style" style={classes} className="reset checkmark"></span>
         </div>
         {label && (
-          <span className="reset checkbox-label">
+          <span data-testid="label" className="reset checkbox-label">
             {label}
             {required && '*'}
           </span>
@@ -57,6 +62,6 @@ const Checkbox: FC<CheckboxProps> = ({
       </label>
     </>
   );
-};
+});
 
 export default Checkbox;

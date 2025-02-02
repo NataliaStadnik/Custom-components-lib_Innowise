@@ -1,4 +1,4 @@
-import { FC, JSX } from 'react';
+import { JSX } from 'react';
 import './style.css';
 import { TextFieldTypes, TextFieldVariants } from '../interfaces';
 import React from 'react';
@@ -6,7 +6,7 @@ interface TextFieldProps {
     variant?: TextFieldVariants;
     size?: 'small' | 'medium';
     type?: TextFieldTypes;
-    label: string;
+    label?: string;
     disabled?: boolean;
     required?: boolean;
     readonly?: boolean;
@@ -14,11 +14,11 @@ interface TextFieldProps {
     defaultValue?: string;
     error?: boolean;
     children?: JSX.Element;
-    handleAction?: () => void;
+    onChange?: () => void;
     classes?: object;
     autoFocus?: boolean;
     placeHolder?: string;
     inputRef?: React.Ref<HTMLInputElement>;
 }
-declare const TextField: FC<TextFieldProps>;
+declare const TextField: React.ForwardRefExoticComponent<TextFieldProps & React.RefAttributes<HTMLInputElement>>;
 export default TextField;

@@ -50,7 +50,11 @@ const Modal: FC<ModalProps> = ({
     <>
       {isOpen &&
         createPortal(
-          <div id="parent-modal" className="backdrop" onClick={(e) => handleClose(e)}>
+          <div
+            data-testid="parent-modal"
+            id="parent-modal"
+            className="backdrop"
+            onClick={(e) => handleClose(e)}>
             <div className="modal">
               {title && <h2 className="modal-title">{title}</h2>}
               {descr && <p className="modal-text">{descr}</p>}

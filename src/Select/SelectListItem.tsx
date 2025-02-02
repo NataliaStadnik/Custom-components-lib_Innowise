@@ -16,7 +16,8 @@ const SelectListItem: FC<SelectListItemProps> = ({ label, labelClick, currentVal
       aria-selected={value === currentValue}
       role="option"
       className={`select-list__item state-${value === currentValue}`}
-      data-value={value}>
+      data-value={value}
+      data-testid={value}>
       {label}
     </li>
   );
