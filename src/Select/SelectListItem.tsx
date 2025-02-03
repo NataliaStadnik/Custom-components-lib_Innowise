@@ -6,16 +6,23 @@ interface SelectListItemProps {
   currentValue: string;
   label: string;
   value: string;
+  classNew: string;
 }
 
-const SelectListItem: FC<SelectListItemProps> = ({ label, labelClick, currentValue, value }) => {
+const SelectListItem: FC<SelectListItemProps> = ({
+  label,
+  labelClick,
+  currentValue,
+  value,
+  classNew,
+}) => {
   return (
     <li
       tabIndex={-1}
       onClick={(e) => labelClick(e)}
       aria-selected={value === currentValue}
       role="option"
-      className={`select-list__item state-${value === currentValue}`}
+      className={`select-list__item state-${value === currentValue} ${classNew}`}
       data-value={value}
       data-testid={value}>
       {label}

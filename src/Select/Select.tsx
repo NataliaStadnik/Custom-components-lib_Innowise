@@ -43,6 +43,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
   const [isOpen, setOpen] = useState(false);
   const [values, setValues] = useState(defaultValue || '');
   const [text, setText] = useState('');
+  const [focusedOptionIndex, setFocusedOptionIndex] = useState(-1);
 
   const labelClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const target = e.target as HTMLButtonElement;
@@ -91,6 +92,22 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
       setOpen(!isOpen);
       e.preventDefault();
     }
+
+    if (e.key === 'Enter' && focusedOptionIndex >= 0) {
+      e.preventDefault();
+      setFocusedOptionIndex(-1);
+      setValues(options[focusedOptionIndex].value);
+      setText(options[focusedOptionIndex].label);
+      setOpen(!isOpen);
+    }
+
+    if (e.key === 'ArrowDown') {
+      setFocusedOptionIndex((prevIndex) => (prevIndex + 1) % options.length);
+    }
+
+    if (e.key === 'ArrowUp') {
+      setFocusedOptionIndex((prevIndex) => (prevIndex - 1 + options.length) % options.length);
+    }
   };
 
   return (
@@ -137,13 +154,14 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
       </div>
       {isOpen && (
         <ul role="listbox" className="select-list">
-          {options.map(({ value, label }) => (
+          {options.map(({ value, label }, index) => (
             <SelectListItem
               key={value}
               currentValue={values}
               value={value}
               label={label}
               labelClick={labelClick}
+              classNew={index === focusedOptionIndex ? 'focus' : ''}
             />
           ))}
         </ul>

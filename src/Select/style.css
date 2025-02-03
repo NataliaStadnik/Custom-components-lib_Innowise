@@ -16,6 +16,7 @@
   width: 32px;
   height: 32px;
   transition: all 0.4s ease-in-out;
+  z-index: 20;
 }
 
 .select-list {
@@ -48,8 +49,7 @@
 }
 
 .select-list__item:hover:not(.state-true),
-.select-list__item:focus-visible:not(.state-true),
-.focus {
+.select-list__item:focus-visible:not(.state-true) {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -200,4 +200,8 @@
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.focus {
+  background-color: rgba(0, 0, 0, 0.05);
 }
