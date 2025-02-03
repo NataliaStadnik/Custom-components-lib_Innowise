@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = ({
   if (href) {
     return (
       <a
-        className={`reset button-root button-${variant} button-${size}`}
+        className={`button-root button-${variant} button-${size}`}
         href={href}
         onClick={onClick}
         style={classes}
@@ -39,7 +39,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button
-      className={`reset button-root button-${variant} button-${size}`}
+      className={`button-root button-${variant} button-${size}`}
       disabled={disabled}
       onClick={onClick}
       style={classes}

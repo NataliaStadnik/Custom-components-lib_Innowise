@@ -37,10 +37,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(p
 
   return (
     <>
-      <label className="reset checkbox-wrap">
-        <div data-testid="checkbox-size" className={`reset checkbox-root checkbox-${size}`}>
+      <label className="checkbox-wrap">
+        <div data-testid="checkbox-size" className={`checkbox-root checkbox-${size}`}>
           <input
-            className={`reset checkbox-input ${checked ? 'checked' : ''}`}
+            className={`checkbox-input ${checked ? 'checked' : ''}`}
             type="checkbox"
             name={label}
             defaultChecked={isChecked}
@@ -51,10 +51,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(p
             ref={inputRef}
             required={required}
           />
-          <span data-testid="checkbox-style" style={classes} className="reset checkmark"></span>
+          <span data-testid="checkbox-style" style={classes} className="checkmark"></span>
         </div>
         {label && (
-          <span data-testid="label" className="reset checkbox-label">
+          <span data-testid="label" className="checkbox-label">
             {label}
             {required && '*'}
           </span>

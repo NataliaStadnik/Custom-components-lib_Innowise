@@ -94,7 +94,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
   };
 
   return (
-    <form data-testid="form" id={id} className={`reset select-wrap`}>
+    <form data-testid="form" id={id} className={`select-wrap`}>
       <div data-testid="select-wrap" className={`select-medium`}>
         <input
           data-testid="select"
@@ -102,7 +102,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
           onChange={(e) => setValues(e.target.value)}
           onClick={openModal}
           onKeyDown={(e) => handleKeyDown(e)}
-          className={`reset select-input ${error ? `error-input-select` : ''}`}
+          className={`select-input ${error ? `error-input-select` : ''}`}
           role="combobox"
           aria-controls="listbox"
           aria-haspopup="listbox"
@@ -115,7 +115,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
           tabIndex={0}
         />
 
-        <label data-testid="select-label" ref={ref} className={`reset select-label`}>
+        <label data-testid="select-label" ref={ref} className={`select-label`}>
           {label}
           {required && '*'}
         </label>
@@ -136,7 +136,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
         <Icon state={isOpen} />
       </div>
       {isOpen && (
-        <ul role="listbox" className="reset select-list">
+        <ul role="listbox" className="select-list">
           {options.map(({ value, label }) => (
             <SelectListItem
               key={value}

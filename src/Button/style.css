@@ -1,26 +1,10 @@
-.reset {
+.button-root {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
   border: none;
-  border-radius: 0;
   box-shadow: none;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
-  appearance: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 1.15;
-  overflow: visible;
-  text-transform: none;
-  user-select: none;
-  outline: 0;
-  text-decoration: none;
-}
-
-.button-root {
   position: relative;
   min-width: 64px;
   border-radius: 4px;
@@ -76,6 +60,7 @@
 
 .button-contained:focus-visible {
   outline: 2px solid #010101bf;
+  cursor: pointer;
 }
 
 .button-outlined {

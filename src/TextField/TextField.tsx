@@ -69,12 +69,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
 
   return (
     <>
-      <fieldset className={`reset textfield-${size}`}>
-        <div data-testid="textfield-wrap" className={`textfield-${size}-size`}>
+      <fieldset className={`textfield textfield-${size}`}>
+        <div data-testid="textfield-wrap" className={`sizes textfield-${size}-size`}>
           <input
             data-testid="TextField"
             value={values}
-            className={`reset textfield-input textfield-input-${variant} textfield-input-${size} ${
+            className={`textfield-input textfield-input-${variant} textfield-input-${size} ${
               error ? `error-input-${variant}` : ''
             }`}
             type={type}
@@ -93,7 +93,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
           <label
             data-testid="TextField-label"
             ref={ref}
-            className={`reset textfield-label textfield-label-${variant} textfield-label-${size} ${variant}-${size}`}
+            className={`textfield-label textfield-label-${variant} textfield-label-${size} ${variant}-${size}`}
             htmlFor={inputID}>
             {label}
             {required && '*'}
