@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import TextField from '../TextField';
 import React from 'react';
 
 describe('Test correct props=variant for TextField', () => {
-  afterEach(cleanup);
-
   it('it should be TextField in DOM with props=outlined', () => {
     render(<TextField variant="outlined" />);
     const textfield = screen.getByTestId('TextField');

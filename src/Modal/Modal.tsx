@@ -1,5 +1,5 @@
 import './style.css';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import { createPortal } from 'react-dom';
 import ChildModal from './ChildModal';
@@ -31,6 +31,10 @@ const Modal: FC<ModalProps> = ({
   if (isOpen) {
     body?.classList.add('no-scroll');
   }
+
+  useEffect(() => {
+    setOpen(open);
+  }, [open]);
 
   const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).id === 'parent-modal') {

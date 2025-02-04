@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { ChangeEvent, forwardRef } from 'react';
 import './style.css';
 import { CheckBoxCommon } from '../interfaces';
 import React from 'react';
@@ -9,43 +9,22 @@ interface SwitchProps extends CheckBoxCommon {
 }
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(props, inputRef) {
-  const {
-    label,
-    defaultChecked,
-    disabled,
-    size = 'medium',
-    onChange,
-    id,
-    classes,
-    required,
-    checked,
-  } = props;
+  const { label, disabled, size = 'medium', onChange, id, classes = '', required, checked } = props;
 
-  const [isChecked, setIsChecked] = useState(defaultChecked || checked);
-
-  const innerHandleChange = () => {
-    if (checked) {
-      return;
-    }
-    setIsChecked(!isChecked);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.checked);
   };
-
-  useEffect(() => {
-    if (onChange) {
-      onChange();
-    }
-  }, [onChange]);
 
   return (
     <label className="switch-root">
-      <div data-testid="switch-style" style={classes} className="switch">
+      <div data-testid="switch-style" className={`switch ${classes}`}>
         <input
           name={label}
           className={`switch-input ${checked ? 'checked' : ''}`}
           type="checkbox"
-          defaultChecked={isChecked}
+          checked={checked}
           disabled={disabled}
-          onChange={innerHandleChange}
+          onChange={handleChange}
           id={id}
           ref={inputRef}
           required={required}

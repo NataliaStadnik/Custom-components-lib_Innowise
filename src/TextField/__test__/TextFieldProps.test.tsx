@@ -1,16 +1,15 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import TextField from '../TextField';
 import React from 'react';
 
 describe('Test correct with another props for TextField', () => {
-  afterEach(cleanup);
-
   it('it should be TextField in DOM with props=disabled', () => {
     const pressedCallback = jest.fn();
 
     render(<TextField label="Label text" disabled />);
     const disabled = screen.getByTestId('TextField');
-    expect(disabled.hasAttribute('disabled')).toBeTruthy();
+    expect(disabled).toBeDisabled();
 
     fireEvent.click(disabled);
     expect(pressedCallback).not.toHaveBeenCalled();
@@ -46,9 +45,8 @@ describe('Test correct with another props for TextField', () => {
   });
 
   it('it should be TextField in DOM with correct props=classes', () => {
-    render(<TextField classes={{ backgroundColor: 'red' }} />);
-    const style = screen.getByTestId('TextField').style;
-    expect(style).toBeTruthy();
-    expect(style.backgroundColor).toEqual('red');
+    render(<TextField classes={'textfield-red'} />);
+    const style = screen.getByTestId('TextField').className;
+    expect(style).toContain('textfield-red');
   });
 });

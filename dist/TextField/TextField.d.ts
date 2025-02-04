@@ -11,11 +11,11 @@ interface TextFieldProps {
     required?: boolean;
     readonly?: boolean;
     helperText?: string;
-    defaultValue?: string;
+    values?: string;
     error?: boolean;
     children?: JSX.Element;
-    onChange?: () => void;
-    classes?: object;
+    onChange?: (a: string) => void;
+    classes?: string;
     autoFocus?: boolean;
     placeHolder?: string;
     inputRef?: React.Ref<HTMLInputElement>;

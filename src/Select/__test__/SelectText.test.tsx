@@ -1,10 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Select from '../Select';
 import React from 'react';
 
 describe('Test correct props=label, helperText, defaultValue for Select', () => {
-  afterEach(cleanup);
-
   const optionsMock = [
     { label: 'ten', value: '10' },
     { label: 'twenty', value: '20' },
@@ -20,8 +18,8 @@ describe('Test correct props=label, helperText, defaultValue for Select', () => 
     expect(screen.getByTestId('help-text').textContent).toBe('Helper text');
   });
 
-  it('it should be Select in DOM with correct defaultValue', () => {
-    render(<Select options={optionsMock} defaultValue="20" />);
+  it('it should be Select in DOM with correct props=selectedItem', () => {
+    render(<Select options={optionsMock} selectedItem="20" />);
     const select = screen.getByTestId('select');
     expect(select.getAttribute('value')).toBe('20');
 

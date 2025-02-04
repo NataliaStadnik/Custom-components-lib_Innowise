@@ -1,10 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Checkbox from '../CheckBox';
 import React from 'react';
 
 describe('Test correct another props for CheckBox', () => {
-  afterEach(cleanup);
-
   it('it should render Checkbox', () => {
     render(<Checkbox />);
     expect(screen.getByRole('checkbox')).toBeTruthy();
@@ -18,7 +17,7 @@ describe('Test correct another props for CheckBox', () => {
   it('it should correct render with props=disabled', () => {
     render(<Checkbox disabled />);
     const checkbox = screen.getByRole('checkbox');
-    expect(checkbox.hasAttribute('disabled')).toBeTruthy();
+    expect(checkbox).toBeDisabled();
   });
 
   it('it should have correct id', () => {
@@ -29,10 +28,9 @@ describe('Test correct another props for CheckBox', () => {
   });
 
   it('it should have correct classes style', () => {
-    render(<Checkbox classes={{ backgroundColor: 'red' }} />);
-    const style = screen.getByTestId('checkbox-style').style;
-    expect(style).toBeTruthy();
-    expect(style.backgroundColor).toEqual('red');
+    render(<Checkbox classes={'checkbox-red'} />);
+    const style = screen.getByTestId('checkbox-style').className;
+    expect(style).toContain('checkbox-red');
   });
 
   it('it should have correct props=required', () => {

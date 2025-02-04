@@ -1,10 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Modal from '../Modal';
 import React from 'react';
 
 describe('Test correct props for Modal component', () => {
-  afterEach(cleanup);
-
   it('it should not be in DOM', () => {
     render(<Modal />);
 

@@ -1,4 +1,4 @@
-import { forwardRef, JSX, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, forwardRef, JSX, useEffect, useRef, useState } from 'react';
 import './style.css';
 import Icon from './Icon';
 import { Options } from '../interfaces';
@@ -11,11 +11,11 @@ interface SelectProps {
   required?: boolean;
   readonly?: boolean;
   helperText?: string;
-  defaultValue?: string;
+  selectedItem?: string;
   error?: boolean;
   children?: JSX.Element;
-  onChange?: () => void;
-  classes?: object;
+  onChange?: (a: string) => void;
+  classes?: string;
   autoFocus?: boolean;
   inputRef?: React.Ref<HTMLInputElement>;
   options: Array<Options>;
@@ -30,33 +30,34 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
     required,
     readonly,
     helperText,
-    defaultValue,
+    selectedItem = '',
     error,
     children,
     onChange,
-    classes,
+    classes = '',
     autoFocus,
     id,
   } = props;
 
   const ref = useRef<HTMLLabelElement>(null);
   const [isOpen, setOpen] = useState(false);
-  const [values, setValues] = useState(defaultValue || '');
+  const [values, setValues] = useState(selectedItem);
   const [text, setText] = useState('');
   const [focusedOptionIndex, setFocusedOptionIndex] = useState(-1);
 
-  const labelClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const labelClick = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent> | ChangeEvent<HTMLInputElement>,
+  ) => {
     const target = e.target as HTMLButtonElement;
     setValues(target.dataset.value || '');
     setText(target.textContent || '');
     setOpen(!isOpen);
   };
 
-  useEffect(() => {
-    if (onChange) {
-      onChange();
-    }
-  }, [onChange]);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.value);
+    labelClick(e);
+  };
 
   useEffect(() => {
     const label = ref.current;
@@ -72,14 +73,14 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
   }, [error, values]);
 
   useEffect(() => {
-    if (defaultValue) {
+    if (selectedItem) {
       options.map(({ value, label }) => {
         if (value === values) {
           setText(label);
         }
       });
     }
-  }, [defaultValue, options, values]);
+  }, [selectedItem, options, values]);
 
   const openModal = () => {
     if (!readonly) {
@@ -112,11 +113,11 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
 
   return (
     <form data-testid="form" id={id} className={`select-wrap`}>
-      <div data-testid="select-wrap" className={`select-medium`}>
+      <div data-testid="select-wrap" className={`select-medium ${classes}`}>
         <input
           data-testid="select"
           value={values}
-          onChange={(e) => setValues(e.target.value)}
+          onChange={handleChange}
           onClick={openModal}
           onKeyDown={(e) => handleKeyDown(e)}
           className={`select-input ${error ? `error-input-select` : ''}`}
@@ -124,7 +125,6 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
           aria-controls="listbox"
           aria-haspopup="listbox"
           autoFocus={autoFocus}
-          style={classes}
           disabled={disabled}
           readOnly={readonly}
           required={required}

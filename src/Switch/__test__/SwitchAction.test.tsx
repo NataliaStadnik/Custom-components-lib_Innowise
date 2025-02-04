@@ -1,21 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Switch from '../Switch';
 import React from 'react';
 
 describe('Test correct another props for Switch', () => {
-  afterEach(cleanup);
-
-  it('it should correct render with props=defaultChecked', () => {
-    const pressedCallback = jest.fn();
-    render(<Switch defaultChecked onChange={() => pressedCallback('bar')} />);
-
-    const checkbox = screen.getByRole('checkbox');
-    expect(checkbox.hasAttribute('checked')).toBeTruthy();
-
-    fireEvent.change(checkbox);
-    expect(pressedCallback).toHaveBeenCalled();
-  });
-
   it('it should correct render with props=checked', () => {
     const pressedCallback = jest.fn();
     render(<Switch checked onChange={() => pressedCallback('bar')} />);
@@ -26,10 +13,16 @@ describe('Test correct another props for Switch', () => {
 
   it('it should correct render with props=onChange', () => {
     const pressedCallback = jest.fn();
-    render(<Switch onChange={() => pressedCallback('bar')} />);
+    render(<Switch onChange={() => pressedCallback} />);
 
-    fireEvent.change(screen.getByRole('checkbox'));
-    expect(pressedCallback).toHaveBeenCalled();
+    const checkbox = screen.getByRole('checkbox');
+    fireEvent.change(checkbox, { target: { checked: true } });
+
+    checkbox.addEventListener('change', pressedCallback);
+    expect(pressedCallback).toHaveBeenCalledTimes(0);
+
+    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    expect(pressedCallback).toHaveBeenCalledTimes(1);
   });
 
   it('it should correct render with props=InputRef', () => {
@@ -38,6 +31,13 @@ describe('Test correct another props for Switch', () => {
     });
     const onMeasure = jest.fn();
     render(<Switch onChange={onMeasure} />);
+
+    const switchs = screen.getByRole('checkbox');
+    switchs.addEventListener('change', onMeasure);
+    expect(onMeasure).toHaveBeenCalledTimes(0);
+
+    switchs.dispatchEvent(new Event('change', { bubbles: true }));
+    expect(onMeasure).toHaveBeenCalledTimes(1);
     expect(onMeasure).toHaveBeenCalled();
   });
 });

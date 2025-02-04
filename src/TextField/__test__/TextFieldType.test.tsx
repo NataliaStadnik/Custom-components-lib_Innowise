@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import TextField from '../TextField';
 import React from 'react';
 
 describe('Test correct props=type for TextField', () => {
-  afterEach(cleanup);
-
   it('it should be TextField in DOM with type=text', () => {
     render(<TextField type="text" />);
     const textfield = screen.getByTestId('TextField');

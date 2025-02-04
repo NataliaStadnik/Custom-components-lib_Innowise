@@ -16,10 +16,9 @@ export type TextFieldTypes =
 
 export interface CheckBoxCommon {
   label?: string;
-  defaultChecked?: boolean;
   disabled?: boolean;
-  onChange?: () => void;
-  classes?: object;
+  onChange?: (a: boolean) => void;
+  classes?: string;
   id?: string;
   inputRef?: React.Ref<HTMLInputElement>;
   required?: boolean;

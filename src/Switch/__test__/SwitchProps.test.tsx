@@ -1,10 +1,9 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Switch from '../Switch';
 import React from 'react';
 
 describe('Test correct another props for Switch', () => {
-  afterEach(cleanup);
-
   it('it should render ', () => {
     render(<Switch />);
     expect(screen.getByRole('checkbox')).toBeTruthy();
@@ -34,16 +33,15 @@ describe('Test correct another props for Switch', () => {
 
     render(<Switch disabled checked onChange={() => pressedCallback('bar')} />);
     const switcher = screen.getByRole('checkbox');
-    expect(switcher.hasAttribute('disabled')).toBeTruthy();
+    expect(switcher).toBeDisabled();
 
     fireEvent.change(switcher);
     expect(switcher.hasAttribute('checked')).toBeTruthy();
   });
 
   it('it should have correct classes style', () => {
-    render(<Switch classes={{ backgroundColor: 'red' }} />);
-    const style = screen.getByTestId('switch-style').style;
-    expect(style).toBeTruthy();
-    expect(style.backgroundColor).toEqual('red');
+    render(<Switch classes={'switch-red'} />);
+    const style = screen.getByTestId('switch-style').className;
+    expect(style).toContain('switch-red');
   });
 });

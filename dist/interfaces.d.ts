@@ -4,10 +4,9 @@ export type TextFieldVariants = 'outlined' | 'filled' | 'standart';
 export type TextFieldTypes = 'text' | 'password' | 'number' | 'search' | 'time' | 'month' | 'email' | 'date';
 export interface CheckBoxCommon {
     label?: string;
-    defaultChecked?: boolean;
     disabled?: boolean;
-    onChange?: () => void;
-    classes?: object;
+    onChange?: (a: boolean) => void;
+    classes?: string;
     id?: string;
     inputRef?: React.Ref<HTMLInputElement>;
     required?: boolean;

@@ -1,10 +1,9 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Select from '../Select';
 import React from 'react';
 
 describe('Test correct another props for Select', () => {
-  afterEach(cleanup);
-
   const optionsMock = [
     { label: 'ten', value: '10' },
     { label: 'twenty', value: '20' },
@@ -16,7 +15,7 @@ describe('Test correct another props for Select', () => {
 
     render(<Select options={optionsMock} disabled />);
     const disabled = screen.getByTestId('select');
-    expect(disabled.hasAttribute('disabled')).toBeTruthy();
+    expect(disabled).toBeDisabled();
 
     fireEvent.click(disabled);
     expect(pressedCallback).not.toHaveBeenCalled();
@@ -60,10 +59,9 @@ describe('Test correct another props for Select', () => {
   });
 
   it('it should be Select in DOM with correct props=classes', () => {
-    render(<Select options={optionsMock} classes={{ backgroundColor: 'red' }} />);
-    const style = screen.getByTestId('select').style;
-    expect(style).toBeTruthy();
-    expect(style.backgroundColor).toEqual('red');
+    render(<Select options={optionsMock} classes={'select-red'} />);
+    const style = screen.getByTestId('select-wrap').className;
+    expect(style).toContain('select-red');
   });
 
   it('it should have correct id', () => {

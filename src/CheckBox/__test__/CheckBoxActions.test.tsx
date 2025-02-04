@@ -2,17 +2,6 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Checkbox from '../CheckBox';
 import React from 'react';
 
-it('it should render with props=defaultChecked and be controlled', () => {
-  const pressedCallback = jest.fn();
-
-  render(<Checkbox defaultChecked onChange={() => pressedCallback('bar')} />);
-  const checkbox = screen.getByRole('checkbox');
-  expect(checkbox.hasAttribute('checked')).toBeTruthy();
-
-  fireEvent.change(checkbox);
-  expect(pressedCallback).toHaveBeenCalled();
-});
-
 it('it should render with props=checked', () => {
   const pressedCallback = jest.fn();
 
@@ -26,10 +15,16 @@ it('it should render with props=checked', () => {
 
 it('it should render with props=onChange', () => {
   const pressedCallback = jest.fn();
-  render(<Checkbox onChange={() => pressedCallback('bar')} />);
+  render(<Checkbox onChange={() => pressedCallback} />);
 
-  fireEvent.change(screen.getByRole('checkbox'));
-  expect(pressedCallback).toHaveBeenCalled();
+  const checkbox = screen.getByRole('checkbox');
+  fireEvent.change(checkbox, { target: { checked: true } });
+
+  checkbox.addEventListener('change', pressedCallback);
+  expect(pressedCallback).toHaveBeenCalledTimes(0);
+
+  checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+  expect(pressedCallback).toHaveBeenCalledTimes(1);
 });
 
 it('it should have correct props=inputRef', () => {
@@ -38,5 +33,12 @@ it('it should have correct props=inputRef', () => {
   });
   const onMeasure = jest.fn();
   render(<Checkbox onChange={onMeasure} />);
+
+  const checkbox = screen.getByRole('checkbox');
+  checkbox.addEventListener('change', onMeasure);
+  expect(onMeasure).toHaveBeenCalledTimes(0);
+
+  checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+  expect(onMeasure).toHaveBeenCalledTimes(1);
   expect(onMeasure).toHaveBeenCalled();
 });

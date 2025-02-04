@@ -9,7 +9,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   onClick?: () => void;
   href?: string;
-  classes?: object;
+  classes?: string;
   id?: string;
   children?: string | React.ReactElement;
 }
@@ -21,16 +21,15 @@ const Button: FC<ButtonProps> = ({
   href,
   onClick,
   children,
-  classes,
+  classes = '',
   id,
 }) => {
   if (href) {
     return (
       <a
-        className={`button-root button-${variant} button-${size}`}
+        className={`button-root button-${variant} button-${size} ${classes}`}
         href={href}
         onClick={onClick}
-        style={classes}
         id={id}>
         {children}
       </a>
@@ -39,10 +38,9 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button
-      className={`button-root button-${variant} button-${size}`}
+      className={`button-root button-${variant} button-${size} ${classes}`}
       disabled={disabled}
       onClick={onClick}
-      style={classes}
       id={id}>
       {children}
     </button>

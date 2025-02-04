@@ -8,11 +8,11 @@ interface SelectProps {
     required?: boolean;
     readonly?: boolean;
     helperText?: string;
-    defaultValue?: string;
+    selectedItem?: string;
     error?: boolean;
     children?: JSX.Element;
-    onChange?: () => void;
-    classes?: object;
+    onChange?: (a: string) => void;
+    classes?: string;
     autoFocus?: boolean;
     inputRef?: React.Ref<HTMLInputElement>;
     options: Array<Options>;

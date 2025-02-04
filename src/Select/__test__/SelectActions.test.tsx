@@ -1,10 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Select from '../Select';
 import React from 'react';
 
 describe('Test correct another props for Select', () => {
-  afterEach(cleanup);
-
   const optionsMock = [
     { label: 'ten', value: '10' },
     { label: 'twenty', value: '20' },
@@ -15,7 +13,7 @@ describe('Test correct another props for Select', () => {
     const pressedCallback = jest.fn();
     render(<Select options={optionsMock} onChange={() => pressedCallback('bar')} />);
 
-    fireEvent.change(screen.getByTestId('select'));
+    fireEvent.change(screen.getByTestId('select'), { target: { value: 'A' } });
     expect(pressedCallback).toHaveBeenCalled();
   });
 
@@ -45,6 +43,13 @@ describe('Test correct another props for Select', () => {
     });
     const onMeasure = jest.fn();
     render(<Select options={optionsMock} onChange={onMeasure} />);
+
+    const element = screen.getByTestId('select');
+    element.addEventListener('change', onMeasure);
+    expect(onMeasure).toHaveBeenCalledTimes(0);
+
+    element.dispatchEvent(new Event('change', { bubbles: true }));
+    expect(onMeasure).toHaveBeenCalledTimes(1);
     expect(onMeasure).toHaveBeenCalled();
   });
 });

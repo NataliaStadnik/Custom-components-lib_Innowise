@@ -1,4 +1,4 @@
-import { forwardRef, JSX, useEffect, useId, useRef, useState } from 'react';
+import { forwardRef, JSX, useEffect, useId, useRef } from 'react';
 import './style.css';
 import { TextFieldTypes, TextFieldVariants } from '../interfaces';
 import React from 'react';
@@ -12,11 +12,11 @@ interface TextFieldProps {
   required?: boolean;
   readonly?: boolean;
   helperText?: string;
-  defaultValue?: string;
+  values?: string;
   error?: boolean;
   children?: JSX.Element;
-  onChange?: () => void;
-  classes?: object;
+  onChange?: (a: string) => void;
+  classes?: string;
   autoFocus?: boolean;
   placeHolder?: string;
   inputRef?: React.Ref<HTMLInputElement>;
@@ -32,20 +32,20 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
     type = 'text',
     required,
     helperText,
-    defaultValue = '',
+    values = '',
     error,
     children,
     onChange,
-    classes,
+    classes = '',
     autoFocus,
     placeHolder,
   } = props;
+
   const inputID = useId();
-  const [values, setValues] = useState(defaultValue);
   const ref = useRef<HTMLLabelElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues(e.target.value);
+    onChange?.(e.target.value);
   };
 
   useEffect(() => {
@@ -61,12 +61,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
     }
   }, [error, values, variant]);
 
-  useEffect(() => {
-    if (onChange) {
-      onChange();
-    }
-  }, [onChange]);
-
   return (
     <>
       <fieldset className={`textfield textfield-${size}`}>
@@ -76,7 +70,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
             value={values}
             className={`textfield-input textfield-input-${variant} textfield-input-${size} ${
               error ? `error-input-${variant}` : ''
-            }`}
+            } ${classes}`}
             type={type}
             name={label}
             id={inputID}
@@ -84,7 +78,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
             disabled={disabled}
             readOnly={readonly}
             required={required}
-            style={classes}
             autoFocus={autoFocus}
             placeholder={placeHolder}
             ref={inputRef}

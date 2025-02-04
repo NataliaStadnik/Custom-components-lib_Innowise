@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import TextField from '../TextField';
 import React from 'react';
 
 describe('Test correct props=label, placeholder, helperText, defaultValue for TextField', () => {
-  afterEach(cleanup);
-
   it('it should be TextField in DOM with correct label', () => {
     render(<TextField label="Label text" />);
     expect(screen.getByTestId('TextField-label').textContent).toBe('Label text');
@@ -22,7 +20,7 @@ describe('Test correct props=label, placeholder, helperText, defaultValue for Te
   });
 
   it('it should be TextField in DOM with correct defaultValue', () => {
-    render(<TextField defaultValue="Hello World" />);
+    render(<TextField values="Hello World" />);
     const textfield = screen.getByTestId('TextField');
     expect(textfield.getAttribute('value')).toBe('Hello World');
   });

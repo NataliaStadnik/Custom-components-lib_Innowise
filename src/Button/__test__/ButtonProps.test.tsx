@@ -1,10 +1,9 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Button from '../Button';
 import React from 'react';
 
 describe('Test correct props for Button component', () => {
-  afterEach(cleanup);
-
   it('it should render with correct textContext', () => {
     render(<Button>Hello World</Button>);
     const textValue = screen.getByRole('button').textContent;
@@ -22,7 +21,7 @@ describe('Test correct props for Button component', () => {
 
     render(<Button disabled>Hello World</Button>);
     const disabled = screen.getByRole('button');
-    expect(disabled.hasAttribute('disabled')).toBeTruthy();
+    expect(disabled).toBeDisabled();
 
     fireEvent.click(disabled);
     expect(pressedCallback).not.toHaveBeenCalled();
@@ -43,13 +42,13 @@ describe('Test correct props for Button component', () => {
 
   it('it should have correct classes style', () => {
     render(
-      <Button variant="contained" classes={{ backgroundColor: 'red' }}>
+      <Button variant="contained" classes={'btn-red'}>
         Hello World
       </Button>,
     );
-    const style = screen.getByRole('button').style;
+    const style = screen.getByRole('button').className;
     expect(style).toBeTruthy();
-    expect(style.backgroundColor).toEqual('red');
+    expect(style).toContain('btn-red');
   });
 
   it('it should have correct props=onClick', () => {

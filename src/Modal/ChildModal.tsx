@@ -32,7 +32,7 @@ const ChildModal: FC<ChildModalProps> = ({ title, descr, updateState }) => {
         <div className="modal modal-child">
           {title && <h2 className="modal-title">{title}</h2>}
           {descr && <p className="modal-text">{descr}</p>}
-          <Button onClick={handleClick} variant="text" classes={{ width: '100%' }}>
+          <Button onClick={handleClick} variant="text" classes={'btn-modal'}>
             Close child modal
           </Button>
         </div>

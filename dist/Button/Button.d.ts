@@ -8,7 +8,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
     onClick?: () => void;
     href?: string;
-    classes?: object;
+    classes?: string;
     id?: string;
     children?: string | React.ReactElement;
 }

@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Checkbox from '../CheckBox';
 import React from 'react';
 
 describe('Test correct props=size for CheckBox', () => {
-  afterEach(cleanup);
-
   it('it should correct render with size=small', () => {
     render(<Checkbox size="small" />);
     const checkbox = screen.getByTestId('checkbox-size');

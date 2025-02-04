@@ -1,10 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Modal from '../Modal';
 import React from 'react';
 
 describe('Test correct props for ChildModal', () => {
-  afterEach(cleanup);
-
   it('it should be child-modal with title and descr  in DOM', () => {
     render(
       <Modal
