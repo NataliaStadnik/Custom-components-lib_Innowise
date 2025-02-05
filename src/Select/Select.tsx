@@ -45,18 +45,18 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
   const [text, setText] = useState('');
   const [focusedOptionIndex, setFocusedOptionIndex] = useState(-1);
 
-  const labelClick = (
-    e: React.MouseEvent<HTMLLIElement, MouseEvent> | ChangeEvent<HTMLInputElement>,
-  ) => {
-    const target = e.target as HTMLButtonElement;
-    setValues(target.dataset.value || '');
-    setText(target.textContent || '');
+  const labelClick = (val: string, label: string) => {
+    setValues(val);
+    setText(label);
+    onChange?.(val);
     setOpen(!isOpen);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-    labelClick(e);
+    const target = e.target as HTMLButtonElement;
+    const value = target.dataset.value || '';
+    const label = target.textContent || '';
+    labelClick(value, label);
   };
 
   useEffect(() => {
@@ -66,6 +66,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
     } else if (values.trim().length === 0 && label?.classList.contains('inset-label')) {
       label?.classList.remove('inset-label');
     }
+
     if (error) {
       label?.classList.add('error');
     }
@@ -96,9 +97,9 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
     if (e.key === 'Enter' && focusedOptionIndex >= 0) {
       e.preventDefault();
       setFocusedOptionIndex(-1);
-      setValues(options[focusedOptionIndex].value);
-      setText(options[focusedOptionIndex].label);
-      setOpen(!isOpen);
+      const val = options[focusedOptionIndex].value;
+      const label = options[focusedOptionIndex].label;
+      labelClick(val, label);
     }
 
     if (e.key === 'ArrowDown') {

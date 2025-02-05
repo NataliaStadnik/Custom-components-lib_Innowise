@@ -11,7 +11,7 @@ export interface ModalProps {
   childTitle?: string;
   childDescr?: string;
   children?: React.ReactNode;
-  onClose?: () => void;
+  onClose?: (a: boolean) => void;
   open?: boolean;
 }
 
@@ -32,19 +32,17 @@ const Modal: FC<ModalProps> = ({
     body?.classList.add('no-scroll');
   }
 
-  useEffect(() => {
-    setOpen(open);
-  }, [open]);
-
   const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).id === 'parent-modal') {
-      if (onClose) {
-        onClose();
-      }
+      onClose?.(!isOpen);
       setOpen(!isOpen);
       body?.classList.remove('no-scroll');
     }
   };
+
+  useEffect(() => {
+    setOpen(open);
+  }, [open]);
 
   const handleChildUpdate = () => {
     setChild(!isChildOpen);

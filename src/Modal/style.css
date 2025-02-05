@@ -24,7 +24,7 @@
   background-color: #fff;
   border: 3px solid #000000;
   animation: slideIn .7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 200;
+  z-index: 500;
 }
 
 @keyframes slideIn {
@@ -41,7 +41,7 @@
   box-sizing: border-box;
   width: 200px;
   padding: 16px 32px 24px;
-  z-index: 300;
+  z-index: 700;
 }
 
 .modal-title {
@@ -62,8 +62,4 @@
 
 .no-scroll {
   overflow: hidden;
-}
-
-.btn-modal {
-  width: 100%;
 }

@@ -7,7 +7,7 @@ export interface ModalProps {
     childTitle?: string;
     childDescr?: string;
     children?: React.ReactNode;
-    onClose?: () => void;
+    onClose?: (a: boolean) => void;
     open?: boolean;
 }
 declare const Modal: FC<ModalProps>;
