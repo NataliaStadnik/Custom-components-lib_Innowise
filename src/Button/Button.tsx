@@ -2,6 +2,7 @@ import { FC, HTMLAttributes } from 'react';
 import './style.css';
 import { Sizes, Variants } from '../interfaces';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   size?: Sizes;
@@ -18,7 +19,7 @@ const Button: FC<ButtonProps> = ({
   size = 'medium',
   variant = 'contained',
   disabled,
-  href,
+  href = '',
   onClick,
   children,
   classes = '',
@@ -26,13 +27,13 @@ const Button: FC<ButtonProps> = ({
 }) => {
   if (href) {
     return (
-      <a
+      <Link
         className={`button-root button-${variant} button-${size} ${classes}`}
-        href={href}
+        to={href}
         onClick={(e) => onClick?.(e)}
         id={id}>
         {children}
-      </a>
+      </Link>
     );
   }
 

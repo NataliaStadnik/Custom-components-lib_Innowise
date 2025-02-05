@@ -1,6 +1,6 @@
 {
   "name": "ui-components_innowise",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./dist/index.js",
   "scripts": {
     "build": "npx webpack",
@@ -82,5 +82,8 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
+  },
+  "dependencies": {
+    "react-router-dom": "^7.1.5"
   }
 }
