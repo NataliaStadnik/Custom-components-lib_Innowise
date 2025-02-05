@@ -82,7 +82,8 @@
   border-radius: 4px;
   color: transparent;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 10;
+  z-index: 100;
+  background-color: transparent;
   outline: none;
   cursor: pointer;
 }
@@ -132,6 +133,7 @@
 
 .select-input:focus-visible+.select-label {
   top: 15px;
+  z-index: 200;
 }
 
 .select-input:disabled {
@@ -149,7 +151,7 @@
   color: rgba(0, 0, 0, 0.4);
   font-size: 13px;
   line-height: 19px;
-  z-index: 20;
+  z-index: 200;
 }
 
 .curr-value {

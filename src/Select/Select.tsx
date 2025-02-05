@@ -61,7 +61,6 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
 
   useEffect(() => {
     const label = ref.current;
-
     if (values.trim().length > 0 && !label?.classList.contains('inset-label')) {
       label?.classList.add('inset-label');
     } else if (values.trim().length === 0 && label?.classList.contains('inset-label')) {
@@ -112,7 +111,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
   };
 
   return (
-    <form data-testid="form" id={id} className={`select-wrap`}>
+    <div data-testid="form" id={id} className={`select-wrap`}>
       <div data-testid="select-wrap" className={`select-medium ${classes}`}>
         <input
           data-testid="select"
@@ -166,7 +165,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
           ))}
         </ul>
       )}
-    </form>
+    </div>
   );
 });
 

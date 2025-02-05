@@ -1,6 +1,6 @@
 {
   "name": "ui-components_innowise",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "./dist/index.js",
   "scripts": {
     "build": "npx webpack",
