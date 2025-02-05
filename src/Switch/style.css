@@ -1,0 +1,162 @@
+.switch-root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.switch {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 25px;
+}
+
+.switch-thumb {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 5px;
+  background-color: #fff;
+  border-radius: 50px;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.switch-thumb::before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #1976d2;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all .25s ease-in;
+}
+
+.track-small~.switch-thumb::before {
+  width: 30px;
+  height: 30px;
+}
+
+.thumb-small {
+  height: 16px;
+  width: 16px;
+}
+
+.thumb-medium {
+  height: 20px;
+  width: 20px;
+}
+
+.switch-track {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+  background-color: rgba(0, 0, 0, .38);
+  border-radius: 7px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.track-small {
+  width: 28px;
+  height: 10px;
+}
+
+.track-medium {
+  width: 34px;
+  height: 14px;
+}
+
+.switch-input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  appearance: none;
+}
+
+.switch-label {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(26, 30, 35);
+}
+
+.switch-input:checked+.switch-track {
+  background-color: rgba(25, 118, 210, 0.5);
+}
+
+.switch-input:checked+.switch-track+.switch-thumb {
+  transform: translate(25px, -50%);
+  background-color: #1976d2;
+}
+
+.checked+.switch-track {
+  background-color: rgba(25, 118, 210, 0.5);
+}
+
+.checked+.switch-track+.switch-thumb {
+  transform: translate(25px, -50%);
+  background-color: #1976d2;
+}
+
+.switch-input:disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.switch-input:disabled+.switch-track {
+  opacity: .3;
+  cursor: default;
+}
+
+.switch-input:disabled:checked+.switch-track+.switch-thumb {
+  background-color: rgb(167, 202, 237);
+  cursor: default;
+}
+
+.switch-input:disabled+.switch-track+.switch-thumb {
+  background-color: #f5f5f5;
+}
+
+.switch-input:focus-visible {
+  outline: none;
+}
+
+.switch-input:hover:not(:disabled)+.switch-track+.switch-thumb::before,
+.switch-input:focus-visible:not(:disabled)+.switch-track+.switch-thumb::before {
+  opacity: .1;
+}

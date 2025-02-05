@@ -1,0 +1,326 @@
+.textfield {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.sizes {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.textfield-medium {
+  position: relative;
+  width: max-content;
+}
+
+.textfield-small {
+  position: relative;
+  width: max-content;
+}
+
+.textfield-label {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 15px;
+  color: rgba(0, 0, 0, 0.4);
+  transform: translateY(-55%);
+  background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.15;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.textfield-label-standart {
+  left: 0;
+  line-height: 31px;
+}
+
+.textfield-label-filled {
+  background-color: inherit;
+}
+
+.textfield-label-medium {
+  top: 43px;
+  font-size: 18px;
+}
+
+.textfield-label-small {
+  top: 37px;
+  left: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.textfield-input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  margin-top: 15px;
+  top: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: rgba(0, 0, 0, 0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.textfield-input-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+.textfield-input[type=date]~.textfield-label-medium,
+.textfield-input[type=month]~.textfield-label-medium,
+.textfield-input[type=time]~.textfield-label-medium {
+  top: 3%;
+}
+
+.textfield-input[type=date]~.textfield-label-small,
+.textfield-input[type=month]~.textfield-label-small,
+.textfield-input[type=time]~.textfield-label-small {
+  top: 5px;
+}
+
+.textfield-input-filled[type=date]~.textfield-label-small,
+.textfield-input-filled[type=month]~.textfield-label-small,
+.textfield-input-filled[type=time]~.textfield-label-small,
+.textfield-input-filled[type=email]~.textfield-label-small {
+  top: 30px;
+  left: 15px;
+}
+
+.textfield-input-medium[type=date]~.textfield-label-medium,
+.textfield-input-medium[type=month]~.textfield-label-medium,
+.textfield-input-medium[type=time]~.textfield-label-medium {
+  top: 30px;
+}
+
+.textfield-input-standart[type=date]~.textfield-label-medium,
+.textfield-input-standart[type=month]~.textfield-label-medium,
+.textfield-input-standart[type=time]~.textfield-label-medium {
+  top: 15%;
+}
+
+.textfield-input-standart[type=date]~.textfield-label-small,
+.textfield-input-standart[type=month]~.textfield-label-small,
+.textfield-input-standart[type=time]~.textfield-label-small,
+.textfield-input-standart[type=email]~.textfield-label-small {
+  top: 30%;
+  left: 0;
+}
+
+.textfield-input-medium {
+  padding: 15px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.textfield-input-small {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.textfield-small-size {
+  width: 185px;
+  height: 100px;
+  position: relative;
+}
+
+.textfield-medium-size {
+  width: 225px;
+  height: 95px;
+  position: relative;
+}
+
+.textfield-input-outlined:hover:not(:focus-visible):not(:disabled) {
+  border: 1px solid #000;
+}
+
+.textfield-input-outlined:focus-visible {
+  border: 2px solid #1976d2;
+  cursor: text;
+}
+
+.textfield-input:focus-visible+.textfield-label {
+  padding: 0 5px;
+  color: #1976d2;
+  font-size: 13px;
+  line-height: 19px;
+  z-index: 10;
+}
+
+.textfield-input-outlined:focus-visible+.textfield-label {
+  top: 15px;
+}
+
+.textfield-input::placeholder {
+  opacity: 0;
+}
+
+.textfield-input:focus-visible::placeholder {
+  opacity: 1;
+}
+
+.textfield-input-small~.standart-small {
+  left: 0;
+}
+
+.textfield-input:disabled {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.set-label-outlined {
+  padding: 0 5px;
+  top: 15px;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+  line-height: 19px;
+  z-index: 10;
+}
+
+.set-label-filled,
+.set-label-standart {
+  top: 30px;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+  line-height: 19px;
+  z-index: 10;
+  background-color: transparent;
+}
+
+.helper-text {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.helper-text-small {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.error,
+.error-input-outlined:focus-visible+.textfield-label,
+.error-input-filled:focus-visible+.textfield-label,
+.error-input-standart:focus-visible+.textfield-label {
+  color: rgb(211, 47, 47);
+}
+
+.error-input-outlined {
+  border-color: rgb(211, 47, 47);
+
+}
+
+.error-input-outlined:focus-visible {
+  border: 2px solid rgb(211, 47, 47);
+}
+
+.textfield-input-filled {
+  height: 60px;
+  padding: 15px 15px 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom: 1px solid #000;
+}
+
+.textfield-input-standart {
+  height: 60px;
+  padding: 15px 0 5px;
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+}
+
+.textfield-input-filled:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.textfield-input-standart:hover:not(:disabled):not(:focus-visible) {
+  border-bottom: 2px solid #000;
+}
+
+.textfield-input-filled:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom-style: dotted;
+}
+
+.textfield-input-standart:disabled {
+  opacity: .7;
+  border-bottom-style: dotted;
+}
+
+.textfield-input-filled:focus-visible,
+.textfield-input-standart:focus-visible {
+  border-bottom: 2px solid #1976d2;
+  cursor: text;
+}
+
+.textfield-input-filled:focus-visible+.textfield-label,
+.textfield-input-standart:focus-visible+.textfield-label {
+  padding: 0;
+  top: 30px;
+  background-color: transparent;
+}
+
+.error-input-filled,
+.error-input-standart {
+  border-bottom: 2px solid rgb(211, 47, 47);
+}
+
+.error-input-filled:focus-visible,
+.error-input-standart:focus-visible {
+  border-bottom: 2px solid rgb(211, 47, 47);
+}
+
+.textfield-input-standart~.helper-text {
+  left: 0;
+}
+
+.textfield-small .textfield-input-filled {
+  height: 50px;
+}
+
+.textfield-small .textfield-input-filled~.helper-text {
+  bottom: 10px;
+}
+
+.textfield-small .textfield-input-outlined~.helper-text {
+  bottom: 15px;
+}
+
+.textfield-input[type=date]~.set-label-outlined,
+.textfield-input[type=month]~.set-label-outlined,
+.textfield-input[type=time]~.set-label-outlined {
+  top: 15px;
+}
