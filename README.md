@@ -53,7 +53,6 @@
 
    - label,
    - disabled,
-   - defaultChecked,
    - checked,
    - size,
    - onChange,
@@ -65,7 +64,7 @@
 3. ### Switch
 
    - label,
-   - defaultChecked,
+   - checked,
    - disabled,
    - size,
    - onChange,
@@ -83,7 +82,7 @@
    - required,
    - readonly,
    - helperText,
-   - defaultValue,
+   - selectedItem,
    - error,
    - children,
    - onChange,
@@ -102,7 +101,7 @@
    - type,
    - required,
    - helperText,
-   - defaultValue,
+   - values,
    - error,
    - children,
    - onChange,
