@@ -15,6 +15,12 @@
 - Jest
 - React Testing Library
 
+## View of components
+
+1. Go to the folder 'ElementsView'
+2. Install Dependencies: `npm install`;
+3. Start: `npm run dev`
+
 ## How to run the app
 
 1. Install Dependencies: `npm install`;
