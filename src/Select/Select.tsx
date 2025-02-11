@@ -37,6 +37,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
     classes = '',
     autoFocus,
     id,
+    ...prop
   } = props;
 
   const ref = useRef<HTMLLabelElement>(null);
@@ -130,6 +131,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(props, 
           required={required}
           ref={inputRef}
           tabIndex={0}
+          {...prop}
         />
 
         <label data-testid="select-label" ref={ref} className={`select-label`}>
